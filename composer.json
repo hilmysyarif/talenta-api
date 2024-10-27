@@ -10,8 +10,8 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/http": "~9.0",
-        "guzzlehttp/guzzle": "^7.2"
+        "illuminate/http": "~11.29",
+        "guzzlehttp/guzzle": "^7.8"
     },
     "license": "MIT",
     "autoload": {
@@ -28,6 +28,10 @@
         {
             "name": "Septianata Rizky Pratama",
             "email": "septianata.pratama@beone-solution.com"
+        },
+        {
+            "name": "Hilmy Syarif",
+            "email": "hilmysyarif13@gmail.com"
         }
     ],
     "minimum-stability": "stable",
