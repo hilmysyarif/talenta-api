@@ -9,6 +9,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Traits\Macroable;
 use RuntimeException;
+use Illuminate\Http\JsonResponse;
+use stdClass;
 
 /**
  * @see https://documenter.getpostman.com/view/12246328/TWDZHvj1
@@ -85,24 +87,24 @@ class TalentaApi
      *
      * @param  string  $method
      * @param  array  $parameters
-     * @return \Illuminate\Http\Client\Response
+     * @return stdClass|\GuzzleHttp\Psr7\Response
      *
      * @throws \RuntimeException
      */
-    protected function sendRequestToTalenta(string $method, array $parameters = []): Response
+    protected function sendRequestToTalenta(string $method, array $parameters = []): stdClass|Response|JsonResponse
     {
         $response = $this->{$method}(...$parameters);
 
-        if (! $response instanceof Response) {
-            throw new RuntimeException(sprintf(
-                'The return value from method %s::%s must be an instance of %s class.',
-                static::class, $method, Response::class
-            ));
-        }
+        // if (! $response instanceof Response) {
+        //     throw new RuntimeException(sprintf(
+        //         'The return value from method %s::%s must be an instance of %s class.',
+        //         static::class, $method, Response::class
+        //     ));
+        // }
 
         // Use throw() method to make sure that it's always throw an exception
         // when the given response is error.
-        return $response->throw();
+        return $response;
     }
 
     /**
